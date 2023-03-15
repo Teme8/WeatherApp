@@ -7,6 +7,7 @@ import {
   Typography,
 } from "@mui/material";
 import React, { useState } from "react";
+import DayCard from "./DayCard";
 
 const CityCard = () => {
   const baseUrl = "https://api.openweathermap.org/data/2.5/weather";
@@ -95,90 +96,104 @@ const CityCard = () => {
       {tempData.length >= 3 &&
         tempData.map(function (results) {
           return (
-            <Card
-              key={results.name}
-              sx={{
-                width: {
-                  xs: "90%",
-                  sm: "65%",
-                  md: "50%",
-                  lg: "40%",
-                  marginBottom: "2%",
-                },
-              }}
-            >
-              <CardContent sx={{ display: "flex", flexDirection: "row" }}>
-                <Typography
+            <><Card
+                  key={results.name}
                   sx={{
-                    padding: 1,
-                    fontSize: "19px",
+                      width: {
+                          xs: "90%",
+                          sm: "65%",
+                          md: "50%",
+                          lg: "40%",
+                          marginBottom: "2%",
+                      },
                   }}
-                >
-                  {results.name}
-                  <Typography
-                    sx={{ fontSize: "13px", color: "#70757A", mb: 10 }}
-                  >
-                    {results.text}
-                  </Typography>
-                </Typography>
-                <Typography
-                  sx={{
-                    padding: 1,
-                    fontSize: "26px",
-                    color: "#262626",
-                    display: "flex",
-                    flexDirection: "row",
-                    ml: "20%",
-                  }}
-                >
-                  <CardMedia
-                    component="img"
-                    height="70"
-                    image="https://i.ibb.co/M2NLtMx/image-not-available-wide3.png"
-                    alt="Weather icon"
-                  />
-                  {results.temperature + "°C"}
-                </Typography>
-              </CardContent>
-              <CardContent
-                sx={{
-                  display: "flex",
-                  flexDirection: "row",
-                }}
               >
-                <Typography sx={{ fontSize: "15px", color: "#262626" }}>
-                  {results.date}
-                  <Typography sx={{ fontSize: "13px", color: "#70757A" }}>
-                    {results.time}
-                  </Typography>
-                </Typography>
-                <Typography
-                  sx={{
-                    fontSize: "13px",
-                    color: "#70757A",
-                    ml: "45%",
-                  }}
-                >
-                  {"Wind: " + results.wind}
-                  <Typography
-                    sx={{
-                      fontSize: "13px",
-                      color: "#70757A",
-                    }}
-                  >
-                    {"Humidity: " + results.humidity}
-                    <Typography
+                  <CardContent sx={{ display: "flex", flexDirection: "row" }}>
+                      <Typography
+                          sx={{
+                              padding: 1,
+                              fontSize: "19px",
+                          }}
+                      >
+                          {results.name}
+                          <Typography
+                              sx={{ fontSize: "13px", color: "#70757A", mb: 10 }}
+                          >
+                              {results.text}
+                          </Typography>
+                      </Typography>
+                      <Typography
+                          sx={{
+                              padding: 1,
+                              fontSize: "26px",
+                              color: "#262626",
+                              display: "flex",
+                              flexDirection: "row",
+                              ml: "20%",
+                          }}
+                      >
+                          <CardMedia
+                              component="img"
+                              height="70"
+                              image="https://i.ibb.co/M2NLtMx/image-not-available-wide3.png"
+                              alt="Weather icon" />
+                          {results.temperature + "°C"}
+                      </Typography>
+                  </CardContent>
+                  <CardContent
                       sx={{
-                        fontSize: "13px",
-                        color: "#70757A",
+                          display: "flex",
+                          flexDirection: "row",
                       }}
-                    >
-                      {"Precipitation (3 h): " + results.precipitation}
-                    </Typography>
-                  </Typography>
-                </Typography>
-              </CardContent>
-            </Card>
+                  >
+                      <Typography sx={{ fontSize: "15px", color: "#262626" }}>
+                          {results.date}
+                          <Typography sx={{ fontSize: "13px", color: "#70757A" }}>
+                              {results.time}
+                          </Typography>
+                      </Typography>
+                      <Typography
+                          sx={{
+                              fontSize: "13px",
+                              color: "#70757A",
+                              ml: "45%",
+                          }}
+                      >
+                          {"Wind: " + results.wind}
+                          <Typography
+                              sx={{
+                                  fontSize: "13px",
+                                  color: "#70757A",
+                              }}
+                          >
+                              {"Humidity: " + results.humidity}
+                              <Typography
+                                  sx={{
+                                      fontSize: "13px",
+                                      color: "#70757A",
+                                  }}
+                              >
+                                  {"Precipitation (3 h): " + results.precipitation}
+                              </Typography>
+                          </Typography>
+                      </Typography>
+                  </CardContent>
+              </Card><Box
+                  sx={{
+                    width: {
+                        xs: "90%",
+                        sm: "65%",
+                        md: "50%",
+                        lg: "40%",
+                        marginBottom: "2%",
+                    },
+                      display: "flex",
+                      alignItems: "center",
+                      flexDirection: "column",
+                  }}
+              >
+                      <DayCard />
+                  </Box></>
           );
         })}
     </Box>
