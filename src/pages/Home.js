@@ -8,7 +8,7 @@ import {
   Select,
 } from "@mui/material";
 import React, { useState } from "react";
-import CityCard from "../components/cityCard";
+import CityCard from "../components/CityCard";
 
 const Home = () => {
   const [city, setCity] = useState(0);
@@ -19,12 +19,12 @@ const Home = () => {
 
   return (
     <Container
+      disableGutters
       sx={{
         width: "100%",
         display: "flex",
         justifyContent: "center",
         flexDirection: "column",
-        mb: 5,
         backgroundColor: "#F8F9FA",
       }}
     >
@@ -42,9 +42,20 @@ const Home = () => {
         Säätutka
       </Box>
       <Box
-       sx={{ display: 'flex', justifyContent: 'center', width: '100%', pt: '12px', pb: '12px' }}
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          width: "100%",
+          pt: "12px",
+          pb: "12px",
+        }}
       >
-        <FormControl sx={{ width: { xs: '90%', sm: '65%', md: '50%', lg: '40%' }, backgroundColor: "#FFFFFF" }}>
+        <FormControl
+          sx={{
+            width: { xs: "90%", sm: "65%", md: "50%", lg: "40%" },
+            backgroundColor: "#FFFFFF",
+          }}
+        >
           <InputLabel id="demo-simple-select-autowidth-label">
             Kaupunki
           </InputLabel>
@@ -65,7 +76,7 @@ const Home = () => {
         </FormControl>
       </Box>
 
-      <CityCard/>
+      <CityCard />
     </Container>
   );
 };
