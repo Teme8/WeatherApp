@@ -1,6 +1,9 @@
+/**
+ * @Author Teemu Tirkkonen
+ * Page displaying weather data of the cities
+ */
 import {
   Box,
-  Card,
   Container,
   FormControl,
   InputLabel,
@@ -12,7 +15,7 @@ import CityCard from "../components/CityCard";
 
 const Home = () => {
   const [city, setCity] = useState(0);
-
+  // Handles the filter change and sets a specific value
   const handleChange = (event) => {
     setCity(event.target.value);
   };

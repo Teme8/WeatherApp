@@ -1,47 +1,42 @@
-import {
-  Box,
-  Card,
-  CardContent,
-  CardMedia,
-  Container,
-  Typography,
-} from "@mui/material";
-import React, { useEffect, useState } from "react";
-import PropTypes from 'prop-types'
-
-const DayCard = ({lat, lng}) => {
+/**
+ * @Author Teemu Tirkkonen
+ * Card component for displaying weather info every three hours. Used in CityCard.js
+ */
+import { Box, Card, CardContent, CardMedia, Typography } from "@mui/material";
+import React, { useState } from "react";
+import PropTypes from "prop-types";
+/**
+ * @param {number} lat latitude of the city
+ * @param {number} lng longitude of the city
+ * @returns city card component
+ */
+const DayCard = ({ lat, lng }) => {
   const baseUrl = "https://api.openweathermap.org/data/2.5/forecast";
   const [wList, setWlist] = useState([]);
-  const cities = [
-    {
-      lat: "61.4991",
-      lng: "23.7871",
-    },
-    { lat: "62.2415", lng: "25.7209" },
-    { lat: "62.8924", lng: "27.677" },
-    { lat: "60.25", lng: "24.6667" },
-  ];
   const weatherList = [];
-
+  // Gets the data from OpenWeatherMap API based on lat & lng
   const getCurrentWeather = async () => {
     await fetch(
-      baseUrl + `?lat=${lat.toString()}&lon=${lng.toString()}&appid=${process.env.REACT_APP_WEATHER_API_KEY}`
+      baseUrl +
+        `?lat=${lat.toString()}&lon=${lng.toString()}&appid=${
+          process.env.REACT_APP_WEATHER_API_KEY
+        }`
     )
       .then((response) => response.json())
-      .then((data) => (createWeatherList(data)));
+      .then((data) => createWeatherList(data));
   };
-
+  // If weather list is empty runs fetch function
   if (wList.length === 0) {
     getCurrentWeather();
   }
-
+  // Creates 3 hour weather list of the cities and sets them to a variable
+  // Only takes first 5 values
   const createWeatherList = (weather) => {
     weatherList.push(weather);
-    weatherList[0].list.splice(5, 35)
+    weatherList[0].list.splice(5, 35);
     console.log(weatherList);
-    setWlist(weatherList) 
+    setWlist(weatherList);
   };
-  
 
   return (
     <Box
@@ -53,7 +48,8 @@ const DayCard = ({lat, lng}) => {
         mb: 0.5,
       }}
     >
-      {wList[0]?.list !== undefined && wList[0]?.list.length >= 5 &&
+      {wList[0]?.list !== undefined &&
+        wList[0]?.list.length >= 5 &&
         wList[0]?.list.map(function (results) {
           return (
             <Card
@@ -64,7 +60,7 @@ const DayCard = ({lat, lng}) => {
                   sm: "65%",
                   md: "50%",
                   lg: "40%",
-                  margin: 3
+                  margin: 3,
                 },
               }}
             >
@@ -96,7 +92,9 @@ const DayCard = ({lat, lng}) => {
                     color: "#70757A",
                   }}
                 >
-                  {(results.main.temp - 273.15).toLocaleString('fi-EU', {maximumSignificantDigits: 1}) + "°C"}
+                  {(results.main.temp - 273.15).toLocaleString("fi-EU", {
+                    maximumSignificantDigits: 1,
+                  }) + "°C"}
                 </Typography>
               </CardContent>
               <CardContent
@@ -107,13 +105,17 @@ const DayCard = ({lat, lng}) => {
                   backgroundColor: "#E5F6FD",
                 }}
               >
-                <Typography  sx={{fontSize: "10px"}}>{"Wind: " + results.wind.speed + " m/s"}</Typography>
-                
-                
-                <Typography sx={{fontSize: "10px"}}>{"Humidity: " + results.main.humidity + " %"}</Typography>
-                    
-                        
-               <Typography sx={{fontSize: "10px"}}>{"Precipitation (3 h): "}</Typography> 
+                <Typography sx={{ fontSize: "10px" }}>
+                  {"Wind: " + results.wind.speed + " m/s"}
+                </Typography>
+
+                <Typography sx={{ fontSize: "10px" }}>
+                  {"Humidity: " + results.main.humidity + " %"}
+                </Typography>
+
+                <Typography sx={{ fontSize: "10px" }}>
+                  {"Precipitation (3 h): "}
+                </Typography>
               </CardContent>
             </Card>
           );
@@ -121,10 +123,10 @@ const DayCard = ({lat, lng}) => {
     </Box>
   );
 };
-
+// Proptypes for component
 DayCard.propTypes = {
-    lat: PropTypes.number.isRequired,
-    lng: PropTypes.number.isRequired,
-  }
+  lat: PropTypes.number.isRequired,
+  lng: PropTypes.number.isRequired,
+};
 
 export default DayCard;

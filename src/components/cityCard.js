@@ -29,8 +29,7 @@ const CityCard = ({ filterVal }) => {
     { lat: "60.25", lng: "24.6667" },
   ];
   const weatherList = [];
-  console.log(filterVal);
-  // Gets the data from OpenWeatherMap
+  // Gets the data from OpenWeatherMap API
   const getCurrentWeather = async () => {
     cities.map(async function (results) {
       await fetch(
