@@ -76,7 +76,7 @@ const Home = () => {
         </FormControl>
       </Box>
 
-      <CityCard />
+      <CityCard filterVal={city} />
     </Container>
   );
 };
