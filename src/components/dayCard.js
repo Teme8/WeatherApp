@@ -34,7 +34,6 @@ const DayCard = ({ lat, lng }) => {
   const createWeatherList = (weather) => {
     weatherList.push(weather);
     weatherList[0].list.splice(5, 35);
-    console.log(weatherList);
     setWlist(weatherList);
   };
 
