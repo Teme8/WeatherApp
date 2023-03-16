@@ -29,6 +29,7 @@ const Home = () => {
         justifyContent: "center",
         flexDirection: "column",
         backgroundColor: "#F8F9FA",
+        fontFamily: "Arial"
       }}
     >
       <Box
@@ -57,9 +58,10 @@ const Home = () => {
           sx={{
             width: { xs: "90%", sm: "65%", md: "50%", lg: "40%" },
             backgroundColor: "#FFFFFF",
+            fontFamily: "Arial"
           }}
         >
-          <InputLabel id="demo-simple-select-autowidth-label">
+          <InputLabel id="demo-simple-select-autowidth-label"> 
             Kaupunki
           </InputLabel>
           <Select

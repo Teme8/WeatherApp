@@ -45,6 +45,7 @@ const DayCard = ({ lat, lng }) => {
         alignItems: "center",
         flexDirection: "row",
         mb: 0.5,
+        fontFamily: "Arial"
       }}
     >
       {wList[0]?.list !== undefined &&
