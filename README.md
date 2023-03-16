@@ -1,9 +1,3 @@
-# Link to app
-https://users.metropolia.fi/~irinakon/my-restaurant  
-  
-  
-![qrcode](https://github.com/vvitchforest/MyRestaurant/blob/master/public/my-restaurant-qr.png)
-
 # Description
 
 This project is a React application made as a code test. The functionalities of this application are to view weather data of 4 cities and there's also a possibility to filter data per city. 
